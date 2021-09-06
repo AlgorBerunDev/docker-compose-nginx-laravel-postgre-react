@@ -1,15 +1,15 @@
 # docker-compose-nginx-laravel-postgre-react
 This is a laravel 5.8, PostgreSQL, Nginx and React builded project with docker-compose.
 
-# docker-compose-nginx-laravel-postgres
-docker-compose,  Nginx, Laravel
-## Base configure
+## Base configure and run
 - mkdir src
 - cd ./src && composer create-project laravel/laravel
 - npm init react-app frontend
 - cd frontend && npm install
 - npm run build
-- cd ../../ && docker-compose up -d
+- cd ../../ && mkdir postgres && mkdir composer
+- docker-compose up -d
+- open in browser http://localhost:8089
 
 ## Nginx urls
 - File links /uploads/* and /src/frontend/build
