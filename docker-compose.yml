@@ -1,12 +1,9 @@
-version: '3'
-  
-networks:
-  laravel:
+version: "3"
 
 services:
   nginx:
     image: nginx:stable-alpine
-    container_name: nginx_exact
+    container_name: nginx_iesf
     ports:
       - "8089:80"
       - "8090:81"
@@ -17,12 +14,12 @@ services:
       - php
     networks:
       - app-network
-    
+
   php:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: php_exact
+    container_name: php_iesf
     volumes:
       - ./src:/var/www/html
     ports:
@@ -44,14 +41,15 @@ services:
     working_dir: /var/www/html
     command: composer install
   postgres:
-    container_name: postgres_container_exact
+    container_name: postgres_container_iesf
     image: postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: iesf
       PGDATA: /data/postgres
     volumes:
-        - ./postgres:/data/postgres
+      - ./postgres:/data/postgres
     ports:
       - "5434:5432"
     networks:
